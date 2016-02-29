@@ -22,9 +22,14 @@ Lamp Stack Server quick installation script
 - back : Go back
 - gohome : Go to the main menu
 
-###### CHANGE LOGS
+# CHANGE LOGS
 **28 February 2016 15:34**
 - updated all python script
+**29 February 2016 10:23**
+- create functions for apache, mysql, php, help, and about
+- adding apache2 installation script
+- adding mysql installation script
+- adding php5 installation script
 
 # CONTACT
 - Website : http://www.jomarrey.com

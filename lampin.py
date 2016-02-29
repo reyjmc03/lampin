@@ -7,6 +7,7 @@
 # Version: 1.0
 # Date Started: 27 February 2016 
 # Date Updated: 28 February 2016
+#               29 February 2016
 # ---------------------------------------------------------------------------------------------------
 
 import os
@@ -35,57 +36,113 @@ def main():
 ##################################################################
 
 		'''
-                def apache():
-                        print "apache ok!"
-                        switch_about = raw_input("\033[1;36mapache: select > \033[1;m")
-                        apache()
+                def apache_function():
+                        print '''
+|------------------------------------------------------------|
+| Select the following (press 'ctrl + c' exit the program ): |
+| 1 - install apache 2                                       |
+| 2 - update  apache 2                                       |
+| 3 - remove  apache 2                                       |
+| back - go to main menu                                     |
+|------------------------------------------------------------|
+                        '''
+                        switch_apache = raw_input("\033[1;36mapache: select > \033[1;m")
+                        if switch_apache == "1":
+                                cmd = os.system("apt-get install apache2")
+                        elif switch_apache == "2":
+                                cmd = os.system("apt-get update apache2")
+                        elif switch_apache == "3":
+                                cmd = os.system("apt-get remove apache2")
+                        elif switch_apache == "back" or switch_apache == "BACK":
+                                mainmenu_function()
+                        else:
+                                print "\033[1;31m 0000 Invalid Command! 0000 \033[1;m"
+                        apache_function()
                         
-                def mysql():
-                        print "mysql ok!"
-                        switch_about = raw_input("\033[1;36mmysql: select > \033[1;m")
-                        mysql()
+                def mysql_function():
+                        print '''
+|------------------------------------------------------------|
+| Select the following (press 'ctrl + c' exit the program ): |
+| 1 - install mysql                                          |
+| 2 - update  mysql                                          |
+| 3 - remove  mysql                                          |
+| back - go to main menu                                     |
+|------------------------------------------------------------|
+                        '''
+                        switch_mysql = raw_input("\033[1;36mmysql: select > \033[1;m")
+                        if switch_mysql == "1":
+                                cmd = os.system("apt-get install mysql-server php5-mysql")
+                        elif switch_mysql == "2":
+                                cmd = os.system("apt-get update mysql-server php5-mysql")
+                        elif switch_mysql == "3":
+                                cmd = os.system("apt-get remove mysql-server php5-mysql")
+                        elif switch_mysql == "back" or switch_mysql == "BACK":
+                                mainmenu_function()
+                        else:
+                                print "\033[1;31m 0000 Invalid Command! 0000 \033[1;m"
+                        mysql_function()
                         
-                def php():
-                        print "php ok!"
-                        switch_about = raw_input("\033[1;36mphpt: select > \033[1;m")
-                        php()
+                def php_function():
+                        print '''
+|------------------------------------------------------------|
+| Select the following (press 'ctrl + c' exit the program ): |
+| 1 - install php5                                           |
+| 2 - install php7                                           |
+| back - go to main menu                                     |
+|------------------------------------------------------------|
+                        '''
+                        switch_php = raw_input("\033[1;36mphp: select > \033[1;m")
+                        if switch_php == "1":
+                                cmd = os.system("apt-get install php5 libapache2-mod-php5 php5-mcrypt")
+                        elif switch_php == "2":
+                                print "\033[1;31m 0000 To be updated soon! 0000 \033[1;m"
+                        elif switch_php == "back" or switch_php == "BACK":
+                                mainmenu_function()
+                        else:
+                                print "\033[1;31m 0000 Invalid Command! 0000 \033[1;m"
+                        php_function()
+
+                def help_function():
+                        print "help function ok!"
+                        switch_help = raw_input("\033[1;36mhelp: select > \033[1;m")
+                        help_function()
                         
-                def about():
+                def about_function():
                         print "about ok!"
                         switch_about = raw_input("\033[1;36mabout: select > \033[1;m")
-                        about()
+                        about_function()
                         
-		def mainmenu():
+		def mainmenu_function():
 			while True:
 				print '''
-|-----------------------------------|
-| Select the following:             |
-| 1) apt-get Update repositories    |
-| 2) Install or Remove Apache2      |
-| 3) Install or Remove MySql        |
-| 4) Install PHP                    |
-| 5) Help                           |
-| 6) About                          |
-|-----------------------------------|
+|------------------------------------------------------------|
+| Select the following (press 'ctrl + c' exit the program ): |
+| 1 - apt-get Update repositories                            |
+| 2 - Install or Remove Apache2                              |
+| 3 - Install or Remove MySql                                |
+| 4 - Install PHP                                            |
+| 5 - Help                                                   |
+| 6 - About                                                  |
+|------------------------------------------------------------|
 			'''
 				switch_main = raw_input("\033[1;36mmain: select > \033[1;m")
 			
 				if switch_main == "1":
                                         command = os.system("apt-get update")
                                 elif switch_main == "2":
-                                        apache()
+                                        apache_function()
                                 elif switch_main == "3":
-                                        print "ok"
+                                        mysql_function()
                                 elif switch_main == "4":
-                                        print "ok"
+                                        php_function()
                                 elif switch_main == "5":
-                                        print " 5ok"
+                                        help_function()
                                 elif switch_main == "6":
-                                        about()      
+                                        about_function()      
                                 else:
-                                        print "---- Invalid Command! ----"
+                                        print "\033[1;31m 0000 Invalid Command! 0000 \033[1;m"
 					
-		mainmenu()
+		mainmenu_function()
 	except KeyboardInterrupt:
 		print "Shutdown requested...Goodbye..."
 	except Exception:
