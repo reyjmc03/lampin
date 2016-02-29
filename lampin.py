@@ -1,14 +1,15 @@
 #!/usr/bin/python
 
-# --------------------------------------------------------------------------------------------------
-# Developer : Jose Mari Caballa Rey
-# Project Name: lampin.py
-# Description: to develop a python based script install for lamp server installer for Ubuntu 14.00.
-# Version: 1.0
-# Date Started: 27 February 2016 
-# Date Updated: 28 February 2016
-#               29 February 2016
-# ---------------------------------------------------------------------------------------------------
+#----------------------------------------------------------#
+# Developer : Jose Mari Caballa Rey                        #
+# Project Name: lampin.py                                  #
+# Description: to develop a python based script install    #
+#              for lamp server installer for Ubuntu 14.00. #
+# Version: 1.0                                             #
+# Date Started: 27 February 2016                           #
+# Date Updated: 28 February 2016                           #
+#               29 February 2016                           #
+#----------------------------------------------------------#
 
 import os
 import sys, traceback
@@ -34,7 +35,6 @@ def main():
 ##################################################################
 ------------------ LAMP Installer Command Script -----------------
 ##################################################################
-
 		'''
                 def apache_function():
                         print '''
@@ -103,13 +103,47 @@ def main():
                         php_function()
 
                 def help_function():
-                        print "help function ok!"
+                        print '''
+|---------------------------------------------------------------------------------------------|
+| How to used LAMPIN (Linux, Apache, MySQL and PHP Installer Kit)                             |
+|                                                                                             |
+| SCRIPT INSTALLATION                                                                         |
+|   - sudo su                                                                                 |
+|   - git clone https://github.com/reyjmc03/lampin.git && cp lampin/lampin.py /usr/bin/lampin |
+|   - chmod +x /usr/bin/lampin                                                                |
+|   - sudo lampin                                                                             |
+|                                                                                             |
+| LAMP Installation                                                                           |
+|`  - just select the number of a tool to install it                                          |
+|    - back: go to main menu                                                                  |
+|---------------------------------------------------------------------------------------------|
+                        '''
                         switch_help = raw_input("\033[1;36mhelp: select > \033[1;m")
+                        if switch_help == "back" or switch_help == "BACK":
+                                mainmenu_function()
+                        else:
+                                print "\033[1;31m 0000 Invalid Command! 0000 \033[1;m"
                         help_function()
                         
                 def about_function():
-                        print "about ok!"
+                        print '''
+|-------------------------------------------------------------|
+| About LAMPPIN (Linux, Apache, MySQL, and PHP Installer Kit) |
+| Created by Jose Mari Rey                                    |
+| Contact Me @                                                |
+|        - Website : http://www.jomarrey.com                  |
+|        - Facebook : https://facebook.com/jomarrey03         |
+|        - Email : reyjmc03@gmail.com                         |
+|                                                             |
+| press 'ctrl + c' exit the program                           |
+| back - go to main menu                                      |
+|-------------------------------------------------------------|
+                        '''
                         switch_about = raw_input("\033[1;36mabout: select > \033[1;m")
+                        if switch_about == "back":
+                                mainmenu_function()
+                        else:
+                                print "\033[1;31m 0000 Invalid Command! 0000 \033[1;m"
                         about_function()
                         
 		def mainmenu_function():
@@ -144,7 +178,9 @@ def main():
 					
 		mainmenu_function()
 	except KeyboardInterrupt:
-		print "Shutdown requested...Goodbye..."
+		print '''
+\033[1;31mGoodbye .. Thank you!!! :) \033[1;m
+'''
 	except Exception:
 		traceback.print_exc(file=sys.stdout)
 	sys.exit(0)
